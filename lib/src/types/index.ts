@@ -97,6 +97,20 @@ export interface SwapOptions {
 }
 
 /**
+ * Swap quote information
+ */
+export interface SwapQuote {
+  inputAmount: string; // Amount being swapped (with decimals)
+  outputAmount: string; // Expected output amount (with decimals)
+  inputToken: string; // Input token address
+  outputToken: string; // Output token address
+  priceImpact: string; // Price impact percentage
+  exchangeRate: string; // Exchange rate (output/input)
+  poolFee: string; // Pool fee percentage
+  estimatedGas: string; // Estimated gas cost
+}
+
+/**
  * Error types for the SDK
  */
 export enum AutoSwapprError {
@@ -107,4 +121,41 @@ export enum AutoSwapprError {
   INSUFFICIENT_BALANCE = 'INSUFFICIENT_BALANCE',
   SWAP_FAILED = 'SWAP_FAILED',
   INVALID_INPUT = 'INVALID_INPUT',
+  QUOTE_FAILED = 'QUOTE_FAILED',
+  NETWORK_ERROR = 'NETWORK_ERROR',
+  RPC_ERROR = 'RPC_ERROR',
+  CONTRACT_ERROR = 'CONTRACT_ERROR',
+  TIMEOUT_ERROR = 'TIMEOUT_ERROR',
+}
+
+/**
+ * Custom error class for AutoSwappr operations
+ */
+export class AutoSwapprSDKError extends Error {
+  public readonly code: AutoSwapprError;
+  public readonly originalError?: Error;
+  public readonly retryable: boolean;
+
+  constructor(
+    code: AutoSwapprError,
+    message: string,
+    originalError?: Error,
+    retryable: boolean = false
+  ) {
+    super(message);
+    this.name = 'AutoSwapprSDKError';
+    this.code = code;
+    this.originalError = originalError;
+    this.retryable = retryable;
+  }
+}
+
+/**
+ * Retry configuration options
+ */
+export interface RetryOptions {
+  maxRetries: number;
+  baseDelay: number; // milliseconds
+  maxDelay: number; // milliseconds
+  backoffMultiplier: number;
 }
