@@ -96,6 +96,21 @@ export interface SwapOptions {
   sqrtRatioLimit?: string; // Custom sqrt ratio limit
 }
 
+export interface BaseSwapParams {
+  amountIn: string; // Amount in USDC (human-readable)
+  slippageBps?: number; // Slippage in basis points (default 50 = 0.5%)
+  recipient?: string; // Recipient address (defaults to sender)
+}
+
+export interface BaseSwapQuote {
+  amountIn: bigint;
+  amountOut: bigint;
+  amountOutMin: bigint;
+  tickSpacing: number;
+  sqrtPriceX96After: bigint;
+  gasEstimate: bigint;
+}
+
 /**
  * Error types for the SDK
  */
@@ -107,4 +122,14 @@ export enum AutoSwapprError {
   INSUFFICIENT_BALANCE = 'INSUFFICIENT_BALANCE',
   SWAP_FAILED = 'SWAP_FAILED',
   INVALID_INPUT = 'INVALID_INPUT',
+}
+
+/**
+ * Configuration for the AutoSwappr Base SDK
+ */
+export interface AutoSwapprBaseConfig {
+  contractAddress?: string;
+  rpcUrl: string;
+  accountAddress?: string;
+  privateKey: string;
 }

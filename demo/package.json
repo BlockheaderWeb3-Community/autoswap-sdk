@@ -6,12 +6,14 @@
   "scripts": {
     "start": "ts-node index.ts",
     "dev": "ts-node --watch index.ts",
+    "base": "ts-node base.ts",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "autoswap-sdk": "^1.0.1",
-    "dotenv": "^17.2.1"
+    "dotenv": "^17.2.1",
+    "ethers": "^6.15.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

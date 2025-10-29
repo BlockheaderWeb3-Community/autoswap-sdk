@@ -53,3 +53,12 @@ export const TOKEN_INFO = {
 export function getTokenInfo(address: string) {
   return TOKEN_INFO[address] || null;
 }
+
+export const AERODROME_V3_POOL_ADDRESS = "0x0206b696a410277ef692024c2b64ccf4eac78589";
+export const AERODROME_V3_ROUTER = "0xBE6D8f0d05cC4be24d5167a3eF062215bE6D18a5";
+export const AERODROME_V3_QUOTER = "0x254cF9E1E6e233aa1AC962CB9B05b2cfeAaE15b0";
+export const USDC_ADDRESS = "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913";
+export const CNGN_ADDRESS = "0x46c85152bfe9f96829aa94755d9f915f9b10ef5f";
+export const USDC_DECIMALS = 6;
+export const CNGN_DECIMALS = 6;
+export const SWAP_DEADLINE_S = 1800;

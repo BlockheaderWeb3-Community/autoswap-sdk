@@ -23,6 +23,7 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^17.2.1",
+    "ethers": "^6.15.0",
     "starknet": "^5.19.5"
   },
   "devDependencies": {
